@@ -20,7 +20,7 @@ RSpec.describe AddressBook do
        end
     end
     
-    #Test methods
+    #Test #add_entry method
     describe "#add_entry" do
        it "add only one entry to the address book" do
            book = AddressBook.new
@@ -40,4 +40,18 @@ RSpec.describe AddressBook do
        end
     end
     
+    
+    describe "#remove_entry" do
+        it "removes only one entry form the address book" do
+            book = AddressBook.new
+            # 3 entries with different data
+            book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+            book.add_entry('Ada Lovelace', '010.012.1518', 'augusta.king@lovelace.com')
+            book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.else@lovelace.com')
+            
+            # remove middle entry
+            book.remove_entry('Ada Lovelace', '010.012.1518', 'augusta.king@lovelace.com')
+            expect(book.entries.size).to eq(2)
+        end
+    end
 end
