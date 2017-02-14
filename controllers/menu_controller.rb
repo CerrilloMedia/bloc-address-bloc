@@ -8,6 +8,11 @@ class MenuController
     end
     
     def main_menu
+        
+        link = "https://www.bloc.io/users/armando-cerrillo/checkpoints/2103?roadmap_section_id=156"
+        
+        puts link
+        
         puts "Main Menu: [ #{address_book.entries.count} ] entries"
         puts "[1] View all entries"
         puts "[2] Create an entry"
@@ -60,7 +65,7 @@ class MenuController
     
     def create_entry
         system "clear"
-        "New AddressBloc Entry"
+        puts "New AddressBloc Entry"
         print "Name: "
         name = gets.chomp
         print "Phone Number: "
