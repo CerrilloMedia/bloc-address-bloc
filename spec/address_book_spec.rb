@@ -201,7 +201,7 @@ RSpec.describe AddressBook do
         # Test a similar named entry to "Bill"
         it "searches AddressBook for Billy" do
             book.import_from_csv("entries.csv")
-            entry = book.binary_search("Billy")
+            entry = book.iterative_search("Billy")
             expect(entry).to be_nil
         end
         
