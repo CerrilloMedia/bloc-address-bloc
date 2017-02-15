@@ -39,4 +39,26 @@ require "csv"
             entries.slice!(index,1)
         end
         
+        def binary_search(name)
+            lower = 0
+            upper = entries.length - 1
+            
+            while lower <= upper
+                
+                mid = (lower + upper) / 2
+                mid_name = entries[mid].name
+                
+                # since array is alphabetical, we can compare
+                if name == mid_name
+                    return entries[mid]
+                elsif name < mid_name   # if less than, make the upperbound equal to the middle value
+                    upper = mid - 1
+                else                    # if greater than, make the lowerbound equal to the middle value
+                    lower = mid + 1
+                end
+            end
+            
+            return nil
+        end
+        
     end
