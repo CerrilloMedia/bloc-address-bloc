@@ -11,7 +11,7 @@ require "csv"
         
         def add_entry(name, phone_number, email)
             index = 0
-            # find proper index of name within the lexicographical order or data
+            # find proper index of name within the lexicographical order of data
             entries.each do |entry|
                if name < entry.name
                    break
@@ -46,10 +46,10 @@ require "csv"
             while lower <= upper
                 
                 mid = (lower + upper) / 2
-                mid_name = entries[mid].name
+                mid_name = entries[mid].name.downcase
                 
                 # since array is alphabetical, we can compare
-                if name == mid_name
+                if name.downcase == mid_name
                     return entries[mid]
                 elsif name < mid_name   # if less than, make the upperbound equal to the middle value
                     upper = mid - 1
