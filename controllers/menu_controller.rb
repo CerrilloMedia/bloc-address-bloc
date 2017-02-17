@@ -8,12 +8,15 @@ class MenuController
     end
     
     def main_menu
-        puts "Main Menu: [ #{address_book.entries.count} ] entries"
+        system "clear"
+        puts "Your address book contains [#{address_book.entries.count}] entries"
+        puts "Main Menu:"
         puts "[1] View all entries"
         puts "[2] Create an entry"
         puts "[3] Search for an entry"
         puts "[4] Import entries from CSV"
         puts "[5] Exit"
+        puts "[6] Self Destruct - clear address book"
         print "Enter your selection: "
         
         selection = gets.to_i
@@ -37,8 +40,9 @@ class MenuController
                 main_menu
             when 5
                 puts "Good-bye!"
-                
                 exit(0)
+            when 6
+                self_destruct
             else
                 system "clear"
                 puts "Sorry, that is not a valid input"
@@ -189,4 +193,19 @@ class MenuController
         end
         
     end 
+    
+    def self_destruct
+        entries = address_book.entries.count
+        
+        if entries > 0
+            puts "Are you sure you want to delete all\n#{entries} entries from address book? y/n"
+            answer = gets.chomp.downcase
+            puts answer[0] == 'y' ? address_book.entries.clear : "command aborted, no entries deleted"
+        else
+            system "clear"
+            puts "** No entries found **\n"
+        end
+        
+        main_menu
+    end
 end
